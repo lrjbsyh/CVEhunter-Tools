@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.venv/
+venv/
+env/
+
+build/
+dist/
+
+CVEhunter_V1.0/
+CVEhunter_V1.0.zip
+
+READMEll.md
+

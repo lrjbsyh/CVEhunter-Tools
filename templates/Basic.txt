@@ -1,0 +1,18 @@
+1-漏洞厂商
+2-漏洞系统
+3-涉及版本
+4-漏洞产品全名
+5-产品介绍链接
+6-漏洞报送者姓名;M00n_L33
+7-漏洞页面
+8-产品下载链接
+9-影响参数
+10-SQLmap的Payload
+11-PoC关键验证代码
+12-SQLmap的示例使用命令
+13-图片填写;图片填写
+14-选择权限(en):No login or authorization is required to exploit this vulnerability\Need basic user permissions to exploit this vulnerability\Need admin permission to exploit this vulnerability
+15-选择权限:无需登录或授权即可利用此漏洞\需要基本用户权限才能利用此漏洞\需要管理员权限才能利用此漏洞
+16-弱口令帐密
+17-弱口令账户权限:匿名/访客\基本用户\管理员\root\读写\只读
+18-弱口令影响类型:数据库\Web系统\第三方服务\API/Token\系统账户

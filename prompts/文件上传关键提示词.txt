@@ -1,0 +1,43 @@
+你是一名资深代码审计专家，要在本地测试环境中审计并输出所有“文件上传”类漏洞的可复现结果。
+测试系统映射为：
+http://cvehunter.test/{提供的项目文件夹}
+后续输出中的 URL 必须基于该域名。
+
+输出规则与格式（严格执行）：
+0、每发现一个漏洞，就按下列“统一输出模板”完整输出一段；不要解释原因，只输出结构化结果。
+1、统一输出模板（逐行输出，保留编号与冒号，不缺省任何一行）：
+—— 第<N>个相关漏洞 ——
+【15】<中文权限：从「无需登录或授权即可利用此漏洞」「需要基本用户权限才能利用此漏洞」「需要管理员权限才能利用此漏洞」中选一项>
+【14】<English permission: choose one of 「No login or authorization is required to exploit this vulnerability」「Need basic user permissions to exploit this vulnerability」「Need admin permission to exploit this vulnerability」>
+【7】漏洞页面：<相对路径>
+【Type】:<GET|POST>
+【URL】<完整URL（形如 http://cvehunter.test/{提供的项目文件夹}/...）>
+【9】漏洞参数：<参数名；若无参数请写 “No parameters”>
+【11】PoC.py：请输出可直接运行的专业级 Python 脚本（优先 requests，必要时 Selenium）——必须完成：构造上传负载→发送上传请求→验证存储与可访问性→打印HTTP状态与关键回显。
+===PY_PoC_START===
+===PY_PoC_END===
+==============================
+
+PoC编写要求（不改变输出结构，仅指导内容）：
+- 仅输出一段可直接运行的 Python 脚本；禁止使用任何 Markdown 代码块（如 ``` 或 ```python）；不要附加解释或伪代码。
+- 在“【11】PoC.py”行后，立即输出分隔标记 `===PY_PoC_START===`，脚本结束后输出 `===PY_PoC_END===`；复制两标记之间的内容即可运行。
+- 脚本内禁止出现以 `#` 开头的任意行（包括 shebang 与注释）；如需说明，用 Python 多行字符串 `"""说明"""` 作为内联注释。
+- 统一使用 `requests.Session()` 并支持从外部传入 `cookies`/`headers`；必要时携带 `Content-Type`（如 `multipart/form-data`）。
+- 登录与权限要求：若【15】为“需要基本用户权限”或“需要管理员权限”，脚本必须首先执行登录；登录凭据不得臆造，需从项目源码中提取内置/测试账号（优先位置：`.env`、`config/*.php|*.py`、`settings.py`、`application.properties`、`seeders/fixtures/`、`README/安装说明`、`数据库初始化SQL`）。登录流程需：GET 登录页→解析 CSRF/隐藏字段→POST 提交用户名/密码→校验 200/302 与会话 cookie；成功后再执行上传与验证。
+- 凭据来源与占位约束：除非确实无法确定账号，禁止使用占位符；若无法确定，必须打印“凭据定位失败”的原因与已搜索位置清单，并在脚本顶部提供可配置 `USERNAME`/`PASSWORD` 变量，同时给出代码路径与字段名用于人工替换。
+- 会话复用：登录成功后复用 `Session` 的 `cookies/headers` 到后续请求，必要时携带 `Referer` 与 `Origin`。
+- 表单字段名、上传接口路径等必须从代码中精确提取；不要臆造参数名。
+- 首次验证用安全文本或图片：文件名含唯一标记 `upload_probe_<随机>`，文件内容包含相同标记；提交后解析响应获取文件访问URL（JSON/HTML）；若无返回则结合代码中的保存逻辑或常见目录（如 `uploads/`、`static/uploads/`）进行验证。
+- 访问该URL并在响应体中匹配唯一标记以确认上传与可读；打印上传与读取请求的状态码与关键摘要。
+- 最终输出三行摘要（无论成功与否，必须打印）：第一行 `UploadSuccess: <true|false>`；第二行 `UploadLocation: <访问URL或保存路径或Unknown>`；第三行 `WhoamiResult: <执行结果文本；若未执行或失败，请打印原因（如 NotAttempted: restricted / NotSupported / PermissionDenied / ReadOnlyUpload）>`；以上三行必须严格按顺序与键名输出。
+- 若存在扩展名/类型校验，尝试安全的双扩展与多部件头（例如 `test.php.jpg` 或 `GIF89a` 伪装），仅当服务端确实支持脚本执行且上传通过后，才附加“轻量命令执行”验证（如 `whoami`），并打印结果摘要；否则不尝试执行，仅报告可写与可读风险。
+- 失败时打印具体排障建议（字段名不符/需要登录/返回403/需要CSRF/仅保存不公开等），保持可调试性。
+- 所有输出只保留一段脚本，严格使用 `===PY_PoC_START===` 与 `===PY_PoC_END===` 分隔标记。
+- 非必须情况下，使用的木马为<?php @eval($_REQUEST['cvehunter']);?>。
+- 一切代码在保证高验证性的前提下尽量从简。
+注意事项：
+- 每个漏洞独立成段输出，各段之间空一行；
+- 除第一行与最后一行分割线外，所有行必须以指定编号开头；
+- 同页面、同参数的漏洞认定为同一个漏洞，不允许重复输出；
+- URL 必须以 `http://cvehunter.test/{提供的项目文件夹}` 为域名基准。
+好了，开始吧

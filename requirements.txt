@@ -1,0 +1,16 @@
+# CVEhunter-新一代集成AI代码审计工具 运行依赖
+
+# GUI
+customtkinter>=5.2.0
+
+# 图像处理
+Pillow>=10.0.0
+
+# 网络请求
+requests>=2.31.0
+
+# 环境变量
+python-dotenv>=1.0.0
+
+# 系统监控（用于内存/进程信息）
+psutil>=5.9.0

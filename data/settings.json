@@ -1,0 +1,25 @@
+{
+  "colors": {
+    "user_message_color": "#00CC66",
+    "ai_message_color": "#00AA44",
+    "delete_button_color": "#8B0000",
+    "delete_button_hover_color": "#660000",
+    "status_enabled_color": "#00AA44",
+    "status_disabled_color": "#CC0000"
+  },
+  "ui": {
+    "font_size": 16,
+    "window_size": "1200x800",
+    "show_hosts_reminder": false
+  },
+  "panel_ratios": {
+    "left": 0.15,
+    "right": 0.4,
+    "report": 0.321484375,
+    "sqlmap": 0.258984375,
+    "center_vertical": 0.7
+  },
+  "tools": {
+    "sqlmap_path": ""
+  }
+}

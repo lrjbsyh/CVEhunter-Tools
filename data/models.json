@@ -1,0 +1,62 @@
+[
+  {
+    "id": "03d49ea9-6ff7-4876-b1c6-b5e93c8c3423",
+    "name": "DeepSeek-R1-Qwen3-8B",
+    "provider": "硅基流动",
+    "api_url": "https://api.siliconflow.cn/v1/chat/completions",
+    "model_name": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+    "api_key": "",
+    "enabled": true,
+    "created_at": "2025-10-02T19:29:25.538156"
+  },
+  {
+    "id": "e28fdf43-c05e-437a-ab15-d275f5bbb5e0",
+    "created_at": "2025-10-02T22:32:45.120546",
+    "enabled": true,
+    "name": "Qwen3-Coder-30B-A3B-Instruct",
+    "provider": "硅基流动",
+    "api_url": "https://api.siliconflow.cn/v1/chat/completions",
+    "model_name": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+    "api_key": ""
+  },
+  {
+    "id": "74254474-f0d7-49c9-8c68-048a111bcc0b",
+    "created_at": "2025-10-04T09:45:45.630544",
+    "enabled": true,
+    "name": "Kimi-K2-Instruct-0905",
+    "provider": "硅基流动",
+    "api_url": "https://api.siliconflow.cn/v1/chat/completions",
+    "model_name": "moonshotai/Kimi-K2-Instruct-0905",
+    "api_key": ""
+  },
+  {
+    "id": "ec33952a-0501-4d57-9b49-9a432c96e6fb",
+    "created_at": "2025-10-21T19:19:22.257110",
+    "enabled": true,
+    "name": "DeepSeek-V3.1-Terminus",
+    "provider": "硅基流动",
+    "api_url": "https://apisiliconflowcn/v1/chat/completions",
+    "model_name": "deepseek-ai/DeepSeek-V3.1-Terminus",
+    "api_key": ""
+  },
+  {
+    "id": "e58873b6-8f01-4638-9144-29329f4fdb49",
+    "created_at": "2025-10-22T19:44:06.561087",
+    "enabled": true,
+    "name": "GLM-4.6",
+    "provider": "硅基流动",
+    "api_url": "https://api.siliconflow.cn/v1/chat/completions",
+    "model_name": "zai-org/GLM-4.6",
+    "api_key": ""
+  },
+  {
+    "id": "90a02f23-a77c-448d-a310-c4dc748a81bd",
+    "created_at": "2025-10-23T13:31:35.017170",
+    "enabled": true,
+    "name": "Qwen3-Coder-480B-A35B-Instruct",
+    "provider": "硅基流动",
+    "api_url": "https://api.siliconflow.cn/v1/chat/completions",
+    "model_name": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+    "api_key": ""
+  }
+]
